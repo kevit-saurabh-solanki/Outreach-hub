@@ -8,6 +8,6 @@ It provides workspace users to manage contact with tagging, manage message templ
 
 It contains authentication module, contacts module, home module, message template and campaign module
 
-
 1. Authentication module
     * login and logout page for admin and user
+
