@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #121212, #1c1c1c);
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-box {
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #f1c40f;
+  margin-bottom: 1.5rem;
+}
+
+.login-box {
+  background-color: #2a2a2a;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  width: 320px;
+  margin: 0 auto;
+}
+.login-box .login-heading {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  color: #f0f0f0;
+}
+.login-box form label {
+  text-align: left;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+  border-bottom: 1px solid white;
+  display: block;
+}
+.login-box form input[type=text],
+.login-box form input[type=password] {
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  display: inline-block;
+  width: 18.8rem;
+}
+.login-box form input[type=submit] {
+  background-color: #f1c40f;
+  color: #121212;
+  font-weight: bold;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.login-box form input[type=submit]:hover {
+  background-color: #e1b70e;
+}
+.login-box .forgot-pass {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+.login-box .forgot-pass a {
+  color: #f1c40f;
+  text-decoration: none;
+}
+.login-box .forgot-pass a:hover {
+  text-decoration: underline;
+}
+.login-box p {
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+}
+.login-box p a {
+  color: #f1c40f;
+  text-decoration: none;
+  margin-left: 0.2rem;
+}
+.login-box p a:hover {
+  text-decoration: underline;
+}
+
+/* For js class *//*# sourceMappingURL=login.css.map */

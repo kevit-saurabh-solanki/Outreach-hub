@@ -1,0 +1,117 @@
+
+$bg-dark: #121212;
+$card-bg: #2a2a2a;
+$text-light: #f0f0f0;
+$accent-yellow: #f1c40f;
+$accent-yellow-hover: #e1b70e;
+
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #121212, #1c1c1c);
+  color: $text-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-box {
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: $accent-yellow;
+  margin-bottom: 1.5rem;
+}
+
+.login-box {
+  background-color: $card-bg;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  width: 320px;
+  margin: 0 auto;
+
+  .login-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    color: $text-light;
+  }
+
+  form {
+    
+
+    label {
+      text-align: left;
+      margin-bottom: 0.3rem;
+      font-size: .9rem;
+      color: $text-light;
+      border-bottom: 1px solid white;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 0.6rem;
+      margin-bottom: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: $text-light;
+      font-size: 0.85rem;
+      display: inline-block;
+      width: 18.8rem;
+    }
+
+    input[type="submit"] {
+      background-color: $accent-yellow;
+      color: $bg-dark;
+      font-weight: bold;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $accent-yellow-hover;
+      }
+    }
+  }
+
+  .forgot-pass {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+
+    a {
+      color: $accent-yellow;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+
+    a {
+      color: $accent-yellow;
+      text-decoration: none;
+      margin-left: 0.2rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* For js class */
