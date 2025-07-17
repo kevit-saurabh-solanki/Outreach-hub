@@ -60,17 +60,25 @@ body {
     border: none;
     width: 10em;
     height: 3em;
-    color: #2c2c2c;
+    color: #121212;
     border-radius: 4px;
     font-size: .9rem;
     font-weight: 700;
-    transition: all 1s linear;
+    transition: all .2s linear;
 }
 
 .started:hover {
     cursor: pointer;
-    background-color: #e1b70e;
-    transition: all 1s linear;
+    background-color: transparent;
+    color: white;
+    transition: all .2s linear;
+    border: 1px solid white;
+}
+.login {
+    border: 1px solid black;
+}
+.login:hover {
+    border: 1px solid gray;
 }
 
 .btn:hover {
@@ -120,6 +128,7 @@ body {
 
 .main-feat-box {
     padding: 4rem 2rem;
+    padding-top: .5rem;
     background-color: #1c1c1c;
     text-align: center;
 }
@@ -165,13 +174,16 @@ i {
 }
 
 .nav-list {
+    text-align: center;
     list-style-type: none;
+    font-size: 1.1rem;
+    padding: 0;
 }
 
 .footer-box {
     text-align: center;
     padding: 2rem;
-    background-color: #1e1e1e;
+    background-color: #323131;
     color: #aaa;
     font-size: 0.9rem;
 }
