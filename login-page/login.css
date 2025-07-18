@@ -43,7 +43,8 @@ body {
   display: block;
 }
 .login-box form input[type=text],
-.login-box form input[type=password] {
+.login-box form input[type=password],
+.login-box form input[type=email] {
   padding: 0.6rem;
   margin-bottom: 1.2rem;
   border: none;

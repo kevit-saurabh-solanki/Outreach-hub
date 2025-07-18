@@ -20,10 +20,10 @@ async function fetchData() {
 
         const username = document.querySelector('#username').value.trim();
         const password = document.querySelector('#pass').value.trim();
+        const email = document.querySelector('#email').value.trim();
 
         for (let i = 0; i < data.length; i++) {
-            if (data[i].username === username && data[i].password === password) {
-                console.log('ok');
+            if (data[i].username === username && data[i].password === password && data[i].email === email) {
                 window.location.href = '../user-page/home.html';
                 return;
             }
