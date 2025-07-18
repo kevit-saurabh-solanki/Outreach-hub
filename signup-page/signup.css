@@ -20,7 +20,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.login-box {
+.signup-box {
   background-color: #2a2a2a;
   padding: 2rem;
   border-radius: 10px;
@@ -28,13 +28,13 @@ body {
   width: 320px;
   margin: 0 auto;
 }
-.login-box .login-heading {
+.signup-box .signup-heading {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   margin-top: 0;
   color: #f0f0f0;
 }
-.login-box form label {
+.signup-box form label {
   text-align: left;
   margin-bottom: 0.3rem;
   font-size: 0.9rem;
@@ -42,8 +42,8 @@ body {
   border-bottom: 1px solid white;
   display: block;
 }
-.login-box form input[type=text],
-.login-box form input[type=password] {
+.signup-box form input[type=text],
+.signup-box form input[type=password] {
   padding: 0.6rem;
   margin-bottom: 1.2rem;
   border: none;
@@ -54,7 +54,7 @@ body {
   display: inline-block;
   width: 18.8rem;
 }
-.login-box form input[type=submit] {
+.signup-box form input[type=submit] {
   background-color: #f1c40f;
   color: #121212;
   font-weight: bold;
@@ -64,29 +64,18 @@ body {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.login-box form input[type=submit]:hover {
+.signup-box form input[type=submit]:hover {
   background-color: #e1b70e;
 }
-.login-box .forgot-pass {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-}
-.login-box .forgot-pass a {
-  color: #f1c40f;
-  text-decoration: none;
-}
-.login-box .forgot-pass a:hover {
-  text-decoration: underline;
-}
-.login-box p {
+.signup-box p {
   font-size: 0.85rem;
   margin-top: 0.8rem;
 }
-.login-box p a {
+.signup-box p a {
   color: #f1c40f;
   text-decoration: none;
   margin-left: 0.2rem;
 }
-.login-box p a:hover {
+.signup-box p a:hover {
   text-decoration: underline;
-}/*# sourceMappingURL=login.css.map */
+}/*# sourceMappingURL=signup.css.map */

@@ -1,10 +1,8 @@
-
 $bg-dark: #121212;
 $card-bg: #2a2a2a;
 $text-light: #f0f0f0;
 $accent-yellow: #f1c40f;
 $accent-yellow-hover: #e1b70e;
-
 
 body {
   margin: 0;
@@ -28,7 +26,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.login-box {
+.signup-box {
   background-color: $card-bg;
   padding: 2rem;
   border-radius: 10px;
@@ -36,7 +34,7 @@ body {
   width: 320px;
   margin: 0 auto;
 
-  .login-heading {
+  .signup-heading {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     margin-top: 0;
@@ -45,7 +43,6 @@ body {
 
   form {
     
-
     label {
       text-align: left;
       margin-bottom: 0.3rem;
@@ -80,20 +77,6 @@ body {
 
       &:hover {
         background-color: $accent-yellow-hover;
-      }
-    }
-  }
-
-  .forgot-pass {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-
-    a {
-      color: $accent-yellow;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
       }
     }
   }
