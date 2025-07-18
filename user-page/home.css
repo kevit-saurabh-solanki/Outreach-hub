@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #f0f0f0;
+  color: #f0f0f0;
+  height: 100vh;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2a2a2a;
+}
+
+.title-box .title {
+  font-size: 1.5rem;
+  color: #f1c40f;
+}
+
+.menu-list {
+  display: flex;
+  gap: 1.5rem;
+}
+.menu-list a {
+  text-decoration: none;
+}
+.menu-list a .menu-item {
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  color: #f0f0f0;
+  transition: background-color 0.3s;
+}
+.menu-list a .menu-item:hover {
+  background-color: #f1c40f;
+  color: #121212;
+}
+
+.signout {
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  color: #121212;
+  background-color: #f1c40f;
+  transition: background-color 0.3s;
+}
+
+.signout:hover {
+  cursor: pointer;
+  background-color: transparent;
+  color: #f1c40f;
+  transition: background-color 0.3s;
+}
+
+.banner-box {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(to right, #1e1e1e, #2a2a2a);
+}
+.banner-box .banner-head {
+  font-size: 2rem;
+  color: #f1c40f;
+  margin-bottom: 0.5rem;
+}
+.banner-box .banner-title {
+  font-size: 1rem;
+  color: #f0f0f0;
+}
+
+.tables-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem;
+}
+.tables-box .table-title {
+  padding-left: 1rem;
+  color: #1c1c1c;
+  display: inline-block;
+}
+.tables-box table {
+  border-collapse: collapse;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  margin: 1rem;
+  min-width: 280px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tables-box table th,
+.tables-box table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #1e1e1e;
+  text-align: left;
+}
+.tables-box table th {
+  background-color: #1c1c1c;
+  color: #f1c40f;
+  font-weight: 600;
+}
+.tables-box table tr:last-child td {
+  border-bottom: none;
+}
+.tables-box table tr:hover {
+  background-color: #1e1e1e;
+}
+
+.footer-box {
+  position: relative;
+  background-color: #2a2a2a;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  top: 15rem;
+}
+.footer-box .nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+.footer-box .nav-list li a {
+  color: #f1c40f;
+  text-decoration: none;
+}
+.footer-box .nav-list li a:hover {
+  text-decoration: underline;
+}
+.footer-box .copy {
+  font-size: 0.9rem;
+  color: #aaa;
+}/*# sourceMappingURL=home.css.map */
