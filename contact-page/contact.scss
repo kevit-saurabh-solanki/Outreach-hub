@@ -1,0 +1,209 @@
+$bg-white: #ffffff;
+$card-bg: #2a2a2a;
+$text-dark: #121212;
+$text-light: #f0f0f0;
+$accent-yellow: #f1c40f;
+$accent-yellow-hover: #e1b70e;
+$border-light: #ddd;
+$bg-dark: #121212;
+
+// Base Styles
+body {
+    background-color: $bg-white;
+    font-family: 'Inter', sans-serif;
+    color: $text-dark;
+    margin: 0;
+}
+
+// Header Navigation
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: $card-bg;
+}
+
+.title-box .title {
+    font-size: 1.5rem;
+    color: $accent-yellow;
+}
+
+.menu-list {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+        text-decoration: none;
+
+        .menu-item {
+            padding: 0.4rem 1rem;
+            border-radius: 5px;
+            color: $text-light;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: $accent-yellow;
+                color: $bg-dark;
+            }
+        }
+    }
+}
+
+.signout {
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    color: $bg-dark;
+    background-color: $accent-yellow;
+    transition: background-color 0.3s;
+}
+
+.signout:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: $accent-yellow;
+    transition: background-color 0.3s;
+}
+
+//title-box
+.contact-title-box {
+  text-align: center;
+  margin-top: 2rem;
+
+  .contact-title {
+    font-size: 2rem;
+    color: $text-dark;
+  }
+}
+
+//search-add-box
+.search-add-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+
+    .search {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        width: 250px;
+        border: 1px solid $border-light;
+        border-radius: 5px;
+    }
+
+    .add-contact-btn {
+        background-color: $accent-yellow;
+        color: $text-dark;
+        border: none;
+        padding: 0.5rem 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: $accent-yellow-hover;
+        }
+    }
+}
+
+//contact-table-box
+.contact-table-box {
+    overflow-x: auto;
+    padding: 1rem 2rem;
+
+    .contact-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid $border-light;
+        }
+
+        th {
+            background-color: $card-bg;
+            color: $accent-yellow;
+        }
+
+        td {
+            background-color: #f9f9f9;
+            color: $text-dark;
+
+            span {
+                background-color: $card-bg;
+                color: $accent-yellow;
+                padding: 0.2rem 0.6rem;
+                margin-right: 0.4rem;
+                border-radius: 4px;
+                font-size: 0.8rem;
+                display: inline-block;
+            }
+        }
+
+        .edit-btn,
+        .delete-btn {
+            padding: 0.3rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-right: 0.4rem;
+        }
+
+        .edit-btn {
+            background-color: $accent-yellow;
+            color: $text-dark;
+
+            &:hover {
+                background-color: $accent-yellow-hover;
+            }
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+
+            &:hover {
+                background-color: #c0392b;
+            }
+        }
+    }
+}
+
+
+//footer
+.footer-box {
+    position: relative;
+    background-color: $card-bg;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    top: 18rem;
+
+    .nav-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 0;
+        margin-bottom: 0.5rem;
+
+        li a {
+            color: $accent-yellow;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .copy {
+        font-size: 0.9rem;
+        color: #aaa;
+    }
+}

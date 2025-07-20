@@ -181,9 +181,28 @@ i {
 }
 
 .footer-box {
-    text-align: center;
-    padding: 2rem;
-    background-color: #323131;
-    color: #aaa;
-    font-size: 0.9rem;
+  position: relative;
+  background-color: #2a2a2a;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  top: 17rem;
+}
+.footer-box .nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+.footer-box .nav-list li a {
+  color: #f1c40f;
+  text-decoration: none;
+}
+.footer-box .nav-list li a:hover {
+  text-decoration: underline;
+}
+.footer-box .copy {
+  font-size: 0.9rem;
+  color: #aaa;
 }
