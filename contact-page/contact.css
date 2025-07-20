@@ -88,6 +88,69 @@ body {
   background-color: #e1b70e;
 }
 
+.contact-form-box {
+  background-color: #2a2a2a;
+  padding: 0rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  width: 320px;
+  margin: 0 auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.contact-form-box .contact-heading {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  color: #f0f0f0;
+}
+.contact-form-box form label {
+  text-align: left;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+  border-bottom: 1px solid white;
+  display: block;
+}
+.contact-form-box form input[type=text],
+.contact-form-box form input[type=email],
+.contact-form-box form input[type=number],
+.contact-form-box form select {
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  display: inline-block;
+  width: 18.8rem;
+}
+.contact-form-box form select {
+  width: 19.9rem;
+}
+.contact-form-box form input[type=submit],
+.contact-form-box form input[type=button] {
+  background-color: #f1c40f;
+  color: #121212;
+  font-weight: bold;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.contact-form-box form input[type=submit]:hover,
+.contact-form-box form input[type=button]:hover {
+  background-color: #e1b70e;
+}
+
+.contact-form-visible {
+  max-height: 500px;
+  padding: 2rem;
+}
+
 .contact-table-box {
   overflow-x: auto;
   padding: 1rem 2rem;

@@ -67,13 +67,13 @@ body {
 
 //title-box
 .contact-title-box {
-  text-align: center;
-  margin-top: 2rem;
+    text-align: center;
+    margin-top: 2rem;
 
-  .contact-title {
-    font-size: 2rem;
-    color: $text-dark;
-  }
+    .contact-title {
+        font-size: 2rem;
+        color: $text-dark;
+    }
 }
 
 //search-add-box
@@ -107,6 +107,81 @@ body {
         }
     }
 }
+
+//contact-form
+.contact-form-box {
+    background-color: $card-bg;
+    padding: 0rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    width: 320px;
+    margin: 0 auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+
+
+    .contact-heading {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        margin-top: 0;
+        color: $text-light;
+    }
+
+    form {
+
+        label {
+            text-align: left;
+            margin-bottom: 0.3rem;
+            font-size: .9rem;
+            color: $text-light;
+            border-bottom: 1px solid white;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            padding: 0.6rem;
+            margin-bottom: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e1e1e;
+            color: $text-light;
+            font-size: 0.85rem;
+            display: inline-block;
+            width: 18.8rem;
+        }
+
+        select {
+            width: 19.9rem;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            background-color: $accent-yellow;
+            color: $bg-dark;
+            font-weight: bold;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: $accent-yellow-hover;
+            }
+        }
+    }
+}
+
+//contact-form-visible
+.contact-form-visible {
+    max-height: 500px;
+    padding: 2rem;
+}
+
 
 //contact-table-box
 .contact-table-box {

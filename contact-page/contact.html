@@ -16,10 +16,10 @@
                 <strong class="title">Outreach Hub</strong>
             </div>
             <div class="menu-list">
-                <a href="">
+                <a href="../user-page/home.html">
                     <div class="home menu-item">Home</div>
                 </a>
-                <a href="">
+                <a href="./contact.html">
                     <div class="contacts menu-item">Contacts</div>
                 </a>
                 <a href="">
@@ -49,6 +49,34 @@
             </div>
         </section>
 
+        <!--add-contact-form-->
+        <section>
+            <div class="contact-form-box">
+                <p class="contact-heading">Add contact</p>
+                <form action="">
+                    <label for="company-name">Company name</label>
+                    <input type="text" id="company-name" name="company-name" minlength="3" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" minlength="3" required>
+
+                    <label for="phone">Contact number</label>
+                    <input type="number" id="phone" name="phone" required>
+
+                    <label for="tags">Tags</label>
+                    <select name="tags" id="tags">
+                        <option class="tag-item" value="VIP">VIP</option>
+                        <option class="tag-item" value="returning">Returning</option>
+                        <option class="tag-item" value="new-user">New user</option>
+                        <option class="tag-item" value="loya;">Loyal</option>
+                    </select>
+
+                    <input type="submit" value="Add" class="add-new-cont">
+                    <input type="button" value="Cancel" class="cancel">
+                </form>
+            </div>
+        </section>
+
         <!--contact table-->
         <div class="contact-table-box">
             <table class="contact-table">
@@ -68,20 +96,22 @@
                 </tr>
             </table>
         </div>
-
-        <!--footer-->
-        <footer>
-            <div class="footer-box">
-                <div class="nav-links">
-                    <ul class="nav-list">
-                        <li><a href="">About us</a></li>
-                        <li><a href="">Contact us</a></li>
-                    </ul>
-                </div>
-                <p class="copy">&copy; All rights reserved</p>
-            </div>
-        </footer>
     </main>
+
+    <!--footer-->
+    <footer>
+        <div class="footer-box">
+            <div class="nav-links">
+                <ul class="nav-list">
+                    <li><a href="">About us</a></li>
+                    <li><a href="">Contact us</a></li>
+                </ul>
+            </div>
+            <p class="copy">&copy; All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="contact.js"></script>
 </body>
 
 </html>
