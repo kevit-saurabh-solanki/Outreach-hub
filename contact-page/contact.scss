@@ -115,7 +115,7 @@ body {
     padding: 0rem;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    width: 320px;
+    width: 90%;
     margin: 0 auto;
     max-height: 0;
     overflow: hidden;
@@ -130,6 +130,12 @@ body {
     }
 
     form {
+
+        .flex-form {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
 
         label {
             text-align: left;
@@ -179,12 +185,12 @@ body {
 
 .contact-form-visible {
     max-height: 500px;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
-.body-visible {
-    visibility: hidden;
-}
+// .body-visible {
+//     visibility: hidden;
+// }
 
 
 //contact-table-box
@@ -262,7 +268,7 @@ body {
     background-color: $card-bg;
     padding: 1.5rem 2rem;
     text-align: center;
-    top: 18rem;
+    top: 50vh;
 
     .nav-list {
         list-style: none;

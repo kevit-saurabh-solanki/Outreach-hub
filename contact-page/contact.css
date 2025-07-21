@@ -94,7 +94,7 @@ body {
   padding: 0rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  width: 320px;
+  width: 90%;
   margin: 0 auto;
   max-height: 0;
   overflow: hidden;
@@ -105,6 +105,11 @@ body {
   margin-bottom: 1.5rem;
   margin-top: 0;
   color: #f0f0f0;
+}
+.contact-form-box form .flex-form {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 .contact-form-box form label {
   text-align: left;
@@ -149,11 +154,7 @@ body {
 
 .contact-form-visible {
   max-height: 500px;
-  padding: 2rem;
-}
-
-.body-visible {
-  visibility: hidden;
+  padding: 1.5rem;
 }
 
 .contact-table-box {
@@ -217,7 +218,7 @@ body {
   background-color: #2a2a2a;
   padding: 1.5rem 2rem;
   text-align: center;
-  top: 18rem;
+  top: 50vh;
 }
 .footer-box .nav-list {
   list-style: none;

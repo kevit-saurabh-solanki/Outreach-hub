@@ -8,29 +8,41 @@ let table = document.querySelector('table');
 
 addBtn.addEventListener('click', () => {
     formBox.classList.add('contact-form-visible');
-    body.classList.add('body-visible');
-    formBox.style.visibility = 'visible';
-    formBox.style.display = 'block';
+    // body.classList.add('body-visible');
+    // formBox.style.visibility = 'visible';
+    // formBox.style.display = 'block';
 })
 
 cancelBtn.addEventListener('click', () => {
-    body.classList.remove('body-visible');
-    formBox.style.display = 'none';
+    formBox.classList.remove('contact-form-visible');
+    // body.classList.remove('body-visible');
+    // formBox.style.display = 'none';
 })
 
 addNewContBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    //hide contact form box----------------------------------------------------------
+    formBox.classList.remove('contact-form-visible');
 
-    //hide contact form box
-    body.classList.remove('body-visible');
-    formBox.style.display = 'none';
+    //declaration----------------------------------------------------------
+    let compName = document.querySelector('#company-name').value;
+    let emailId = document.querySelector('#email').value;
+    let phoneNum = document.querySelector('#phone').value;
+    let tag = document.querySelector('#tags').value;
 
-    //push in array
-    // let compName = document.querySelector('#company-name').value;
-    // let emailId = document.querySelector('#email').value;
-    // let phoneNum = document.querySelector('#phone').value;
-    // let tag = document.querySelector('#tags').value;
+    //validate----------------------------------------------------------
+    if (phoneNum === "" || compName === "" || emailId === "") {
+        alert('Fill all details properly');
+        return;
+    }
 
+    //validate number----------------------------------------------------------
+    if (phoneNum.length > 10 || phoneNum.length < 10) {
+        alert('Enter valid phone number');
+        return;
+    }
+
+    //push in array----------------------------------------------------------
     // let data_obj = {
     //     company_name: compName,
     //     email_id: emailId,
@@ -41,7 +53,7 @@ addNewContBtn.addEventListener('click', (e) => {
     // data.push(data_obj);
     // console.log(data);
 
-    //table display
+    //table display----------------------------------------------------------
     let tr = document.createElement('tr');
     let nameTd = document.createElement('td');
     let emTd = document.createElement('td');
@@ -75,7 +87,7 @@ addNewContBtn.addEventListener('click', (e) => {
     tr.appendChild(btnTd);
     table.appendChild(tr);
 
-    //delete row
+    //delete row----------------------------------------------------------
     let dltBtns = document.querySelectorAll('.delete-btn');
     dltBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -83,6 +95,16 @@ addNewContBtn.addEventListener('click', (e) => {
         })
     })
 
+    //edit row----------------------------------------------------------
+    let edtBtns = document.querySelectorAll('.edit-btn');
+    edtBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            let tar = e.target;
+            let currTr = tar.parentElement.parentElement;
+            let currTd = tar.parentElement;
+            let currTdChild = currTd.children;
+        })
+    })
 
 
 })

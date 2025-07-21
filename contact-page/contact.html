@@ -55,22 +55,32 @@
             <div class="contact-form-box">
                 <p class="contact-heading">Add contact</p>
                 <form action="">
-                    <label for="company-name">Company name</label>
-                    <input type="text" id="company-name" name="company-name" minlength="3" required>
+                    <div class="flex-form">
+                        <div>
+                            <label for="company-name">Company name</label>
+                            <input type="text" id="company-name" name="company-name" minlength="3" required>
+                        </div>
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" minlength="3" required>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" minlength="3" required>
+                        </div>
 
-                    <label for="phone">Contact number</label>
-                    <input type="number" id="phone" name="phone" required min="10">
+                        <div>
+                            <label for="phone">Contact number</label>
+                            <input type="number" id="phone" name="phone" min="1000000000" max="9999999999" required>
+                        </div>
 
-                    <label for="tags">Tags</label>
-                    <select name="tags" id="tags" multiple>
-                        <option class="tag-item" value="VIP">VIP</option>
-                        <option class="tag-item" value="returning">Returning</option>
-                        <option class="tag-item" value="new-user">New user</option>
-                        <option class="tag-item" value="loyal">Loyal</option>
-                    </select>
+                        <div>
+                            <label for="tags">Tags</label>
+                            <select name="tags" id="tags">
+                                <option class="tag-item" value="VIP">VIP</option>
+                                <option class="tag-item" value="returning">Returning</option>
+                                <option class="tag-item" value="new-user">New user</option>
+                                <option class="tag-item" value="loyal">Loyal</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <input type="submit" value="Add" class="add-new-cont">
                     <input type="button" value="Cancel" class="cancel">
