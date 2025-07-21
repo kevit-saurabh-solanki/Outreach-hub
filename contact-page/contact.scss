@@ -13,6 +13,7 @@ body {
     font-family: 'Inter', sans-serif;
     color: $text-dark;
     margin: 0;
+    height: 100vh;
 }
 
 // Header Navigation
@@ -118,7 +119,7 @@ body {
     margin: 0 auto;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.5s ease;
+    transition: all .5s ease;
 
 
     .contact-heading {
@@ -176,10 +177,13 @@ body {
     }
 }
 
-//contact-form-visible
 .contact-form-visible {
     max-height: 500px;
     padding: 2rem;
+}
+
+.body-visible {
+    visibility: hidden;
 }
 
 
@@ -190,7 +194,7 @@ body {
 
     .contact-table {
         width: 100%;
-        border-collapse: collapse;
+        // border-collapse: collapse;
         min-width: 600px;
 
         th,
@@ -198,6 +202,7 @@ body {
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid $border-light;
+            width: 346px;
         }
 
         th {
@@ -209,7 +214,7 @@ body {
             background-color: #f9f9f9;
             color: $text-dark;
 
-            span {
+            .tag {
                 background-color: $card-bg;
                 color: $accent-yellow;
                 padding: 0.2rem 0.6rem;

@@ -49,7 +49,8 @@
             </div>
         </section>
 
-        <!--add-contact-form-->
+
+        <!--contact-form-box-->
         <section>
             <div class="contact-form-box">
                 <p class="contact-heading">Add contact</p>
@@ -61,14 +62,14 @@
                     <input type="email" id="email" name="email" minlength="3" required>
 
                     <label for="phone">Contact number</label>
-                    <input type="number" id="phone" name="phone" required>
+                    <input type="number" id="phone" name="phone" required min="10">
 
                     <label for="tags">Tags</label>
-                    <select name="tags" id="tags">
+                    <select name="tags" id="tags" multiple>
                         <option class="tag-item" value="VIP">VIP</option>
                         <option class="tag-item" value="returning">Returning</option>
                         <option class="tag-item" value="new-user">New user</option>
-                        <option class="tag-item" value="loya;">Loyal</option>
+                        <option class="tag-item" value="loyal">Loyal</option>
                     </select>
 
                     <input type="submit" value="Add" class="add-new-cont">
@@ -87,13 +88,13 @@
                     <th>Tags</th>
                     <th></th>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>Saurabh Solanki</td>
                     <td>1234567890</td>
                     <td>saur@gmail.com</td>
-                    <td><span>VIP</span><span>Repeated</span></td>
+                    <td><span class="tag">VIP</span><span class="tag">Repeated</span></td>
                     <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
-                </tr>
+                </tr> -->
             </table>
         </div>
     </main>
