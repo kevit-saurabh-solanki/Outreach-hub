@@ -88,6 +88,44 @@
             </div>
         </section>
 
+        <!--edit-form-box-->
+        <section>
+            <div class="edit-form-box">
+                <p class="edit-heading">Edit contact</p>
+                <form action="">
+                    <div class="flex-form">
+                        <div>
+                            <label for="edit-name">Company name</label>
+                            <input type="text" id="edit-name" name="company-name" required>
+                        </div>
+
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="edit-email" name="email" minlength="3" required>
+                        </div>
+
+                        <div>
+                            <label for="edit-phone">Contact number</label>
+                            <input type="number" id="edit-phone" name="phone" min="1000000000" max="9999999999" required>
+                        </div>
+
+                        <div>
+                            <label for="edit-tags">Tags</label>
+                            <select name="tags" id="edit-tags">
+                                <option class="tag-item" value="VIP">VIP</option>
+                                <option class="tag-item" value="returning">Returning</option>
+                                <option class="tag-item" value="new-user">New user</option>
+                                <option class="tag-item" value="loyal">Loyal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Save" class="edit-cont">
+                    <input type="button" value="Cancel" class="edit-cancel">
+                </form>
+            </div>
+        </section>
+
         <!--contact table-->
         <div class="contact-table-box">
             <table class="contact-table">

@@ -1,20 +1,21 @@
 const addBtn = document.querySelector('.add-contact-btn');
-const formBox = document.querySelector('.contact-form-box')
+const formBox = document.querySelector('.contact-form-box');
+const editForm = document.querySelector('.edit-form-box');
 const body = document.querySelector('body');
 const cancelBtn = document.querySelector('.cancel');
 const addNewContBtn = document.querySelector('.add-new-cont');
-let data = [];
+// let data = [];
 let table = document.querySelector('table');
 
 addBtn.addEventListener('click', () => {
-    formBox.classList.add('contact-form-visible');
+    formBox.classList.add('form-visible');
     // body.classList.add('body-visible');
     // formBox.style.visibility = 'visible';
     // formBox.style.display = 'block';
 })
 
 cancelBtn.addEventListener('click', () => {
-    formBox.classList.remove('contact-form-visible');
+    formBox.classList.remove('form-visible');
     // body.classList.remove('body-visible');
     // formBox.style.display = 'none';
 })
@@ -22,7 +23,7 @@ cancelBtn.addEventListener('click', () => {
 addNewContBtn.addEventListener('click', (e) => {
     e.preventDefault();
     //hide contact form box----------------------------------------------------------
-    formBox.classList.remove('contact-form-visible');
+    formBox.classList.remove('form-visible');
 
     //declaration----------------------------------------------------------
     let compName = document.querySelector('#company-name').value;
@@ -96,17 +97,37 @@ addNewContBtn.addEventListener('click', (e) => {
     })
 
     //edit row----------------------------------------------------------
-    let edtBtns = document.querySelectorAll('.edit-btn');
-    edtBtns.forEach(btn => {
+    var currentRow = null;
+    document.querySelectorAll('.edit-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            let tar = e.target;
-            let currTr = tar.parentElement.parentElement;
-            let currTd = tar.parentElement;
-            let currTdChild = currTd.children;
-        })
-    })
+            currentRow = e.target.closest('tr');
+            editForm.classList.add('form-visible');
+        });
+    });
 
+    document.querySelector('.edit-cont').addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!currentRow) return;
 
+        // Get form values
+        let editName = document.querySelector('#edit-name').value;
+        let editEmail = document.querySelector('#edit-email').value;
+        let editPhone = document.querySelector('#edit-phone').value;
+        let editTags = document.querySelector('#edit-tags').value;
+
+        // Update row values
+        let td = currentRow.children;
+        td[0].innerText = editName;
+        td[1].innerText = editPhone;
+        td[2].innerText = editEmail;
+        td[3].firstElementChild.innerText = editTags;
+
+        // Hide form
+        editForm.classList.remove('form-visible');
+
+        // Reset tracker
+        currentRow = null;
+    });
 })
 
 

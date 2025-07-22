@@ -152,7 +152,70 @@ body {
   background-color: #e1b70e;
 }
 
-.contact-form-visible {
+.edit-form-box {
+  background-color: #2a2a2a;
+  padding: 0rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  margin: 0 auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.edit-form-box .edit-heading {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  color: #f0f0f0;
+}
+.edit-form-box form .flex-form {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.edit-form-box form label {
+  text-align: left;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+  border-bottom: 1px solid white;
+  display: block;
+}
+.edit-form-box form input[type=text],
+.edit-form-box form input[type=email],
+.edit-form-box form input[type=number],
+.edit-form-box form select {
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  display: inline-block;
+  width: 18.8rem;
+}
+.edit-form-box form select {
+  width: 19.9rem;
+}
+.edit-form-box form input[type=submit],
+.edit-form-box form input[type=button] {
+  background-color: #f1c40f;
+  color: #121212;
+  font-weight: bold;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.edit-form-box form input[type=submit]:hover,
+.edit-form-box form input[type=button]:hover {
+  background-color: #e1b70e;
+}
+
+.form-visible {
   max-height: 500px;
   padding: 1.5rem;
 }
