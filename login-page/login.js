@@ -29,7 +29,7 @@ submit.addEventListener('click', async (e) => {
             body: dataSent,
             headers: {
                 "content-type": "application/json",
-                "Authorization": `Bearer`
+                "Authorization": "Bearer"
             }
         });
         if (response.ok) {

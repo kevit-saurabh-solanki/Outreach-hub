@@ -1,13 +1,13 @@
 const addBtn = document.querySelector('.add-contact-btn');
 const formBox = document.querySelector('.contact-form-box');
 const editForm = document.querySelector('.edit-form-box');
-const body = document.querySelector('body');
 const cancelBtn = document.querySelector('.cancel');
 const addNewContBtn = document.querySelector('.add-new-cont');
 let table = document.querySelector('table');
 
 addBtn.addEventListener('click', () => {
-    formBox.classList.add('form-visible');
+    formBox.classList.toggle('form-visible');
+    editForm.classList.remove('form-visible');
 })
 
 cancelBtn.addEventListener('click', () => {
@@ -17,7 +17,7 @@ cancelBtn.addEventListener('click', () => {
     document.querySelector('#tags').value = "";
 })
 
-addNewContBtn.addEventListener('click', (e) => {
+addNewContBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     //hide contact form box----------------------------------------------------------
     formBox.classList.remove('form-visible');
@@ -26,6 +26,7 @@ addNewContBtn.addEventListener('click', (e) => {
     let compName = document.querySelector('#company-name').value.trim();
     let phoneNum = document.querySelector('#phoneNumber').value.trim();
     let tags = document.querySelector('#tags').value.trim();
+    let tagArr = tags.split(',');
 
     //validate----------------------------------------------------------
     if (phoneNum === "" || compName === "" || tags === "") {
@@ -51,14 +52,16 @@ addNewContBtn.addEventListener('click', (e) => {
     let nameTd = document.createElement('td');
     let phnTd = document.createElement('td');
     let tagTd = document.createElement('td');
-    let tagSpan = document.createElement('span');
+    tagArr.forEach(tag => {
+        let tagSpan = document.createElement('span');
 
-    tagSpan.innerText = tags;
-    tagSpan.classList.add('tag');
+        tagSpan.innerText = tag;
+        tagSpan.classList.add('tag');
+        tagTd.appendChild(tagSpan);
+    })
+
     nameTd.innerText = compName;
     phnTd.innerText = phoneNum;
-
-    tagTd.appendChild(tagSpan);
 
     let btnTd = document.createElement('td');
     let edtBtn = document.createElement('button');
@@ -81,6 +84,30 @@ addNewContBtn.addEventListener('click', (e) => {
     document.querySelector('#phoneNumber').value = "";
     document.querySelector('#tags').value = "";
 
+    //new data added to the prebuilt api---------------------------------------------
+    try {
+        let response = await fetch('http://localhost:3000/contacts', {
+            method: 'POST',
+            body: JSON.stringify({
+                "name": compName,
+                "phoneNumber": phoneNum,
+                "tags": tagArr
+            }),
+            headers: {
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        if (response.ok) {
+            let jsonres = await response.json();
+            console.log(jsonres);
+            console.log("contact added");
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+
     //delete row----------------------------------------------------------
     let dltBtns = document.querySelectorAll('.delete-btn');
     dltBtns.forEach(btn => {
@@ -95,6 +122,7 @@ addNewContBtn.addEventListener('click', (e) => {
         btn.addEventListener('click', (e) => {
             currentRow = e.target.closest('tr');
             editForm.classList.add('form-visible');
+            formBox.classList.remove('form-visible');
         });
     });
 
@@ -102,10 +130,12 @@ addNewContBtn.addEventListener('click', (e) => {
         e.preventDefault();
         if (!currentRow) return;
 
-        // Get form values
+        // Get edit form values------------------------------------------------
         let editName = document.querySelector('#edit-name').value.trim();
         let editPhone = document.querySelector('#edit-phone').value.trim();
         let editTags = document.querySelector('#edit-tags').value.trim();
+        let editTagArr = editTags.split(',');
+        console.log(editTagArr);
 
         //validation----------------------------------------------------
         if (editName === "" || editPhone === "" || editTags === "") {
@@ -127,13 +157,25 @@ addNewContBtn.addEventListener('click', (e) => {
             return;
         }
 
-        // Update row values
+        // Update row values-------------------------------------------------
         let td = currentRow.children;
         td[0].innerText = editName;
         td[1].innerText = editPhone;
-        td[2].firstElementChild.innerText = editTags;
+        let spans = td[2].children;
+        console.log(spans);
+        for (let i = 0; i < spans.length; i++) {
+            spans[i].remove();
+        }
+        td[2].firstElementChild.remove();
+        editTagArr.forEach(editTag => {
+            let tagSpan = document.createElement('span');
 
-        // Hide form
+            tagSpan.innerText = editTag;
+            tagSpan.classList.add('tag');
+            td[2].appendChild(tagSpan);
+        })
+
+        // Hide form-------------------------------------------
         editForm.classList.remove('form-visible');
         document.querySelector('#edit-name').value = "";
         document.querySelector('#edit-phone').value = "";
@@ -148,10 +190,8 @@ addNewContBtn.addEventListener('click', (e) => {
             document.querySelector('#edit-phone').value = "";
             document.querySelector('#edit-tags').value = "";
         })
-    });
+    })
 })
-
-
 
 
 
