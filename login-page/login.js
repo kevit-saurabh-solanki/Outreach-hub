@@ -1,38 +1,50 @@
 
-const url = 'https://687a0cceabb83744b7eb2ab8.mockapi.io/Login';
+const url = 'http://localhost:3000/auth/login';
 const submit = document.querySelector('#submit');
 let data;
+let dataSent;
 
-async function fetchData() {
+submit.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const username = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
+
+    document.querySelector('#username').value = "";
+    document.querySelector('#password').value = "";
+
+    if (username !== 'editor' || password !== 'editor') {
+        alert('Invalid credentials');
+        return;
+    }
+
+
+    dataSent = JSON.stringify({
+        username: username,
+        password: password
+    });
+
     try {
-        let response = await fetch(url);
+        let response = await fetch(url, {
+            method: 'POST',
+            body: dataSent,
+            headers: {
+                "content-type": "application/json",
+                "Authorization": `Bearer`
+            }
+        });
         if (response.ok) {
             data = await response.json();
+            console.log(data);
+            localStorage.setItem("token", data.access_token);
         }
     }
     catch (error) {
         console.log(error);
     }
 
-    // Event listener after data is fetched
-    submit.addEventListener('click', (e) => {
-        e.preventDefault();
+    window.open('../user-page/home.html', '_blank');
 
-        const username = document.querySelector('#username').value.trim();
-        const password = document.querySelector('#pass').value.trim();
-        const email = document.querySelector('#email').value.trim();
+});
 
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].username === username && data[i].password === password && data[i].email === email) {
-                window.location.href = '../user-page/home.html';
-                return;
-            }
-        }
-
-        console.log('Invalid credentials');
-        alert('Invalid username or password!');
-    });
-}
-
-fetchData();
 

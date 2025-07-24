@@ -4,20 +4,14 @@ const editForm = document.querySelector('.edit-form-box');
 const body = document.querySelector('body');
 const cancelBtn = document.querySelector('.cancel');
 const addNewContBtn = document.querySelector('.add-new-cont');
-// let data = [];
 let table = document.querySelector('table');
 
 addBtn.addEventListener('click', () => {
     formBox.classList.add('form-visible');
-    // body.classList.add('body-visible');
-    // formBox.style.visibility = 'visible';
-    // formBox.style.display = 'block';
 })
 
 cancelBtn.addEventListener('click', () => {
     formBox.classList.remove('form-visible');
-    // body.classList.remove('body-visible');
-    // formBox.style.display = 'none';
 })
 
 addNewContBtn.addEventListener('click', (e) => {
@@ -42,17 +36,6 @@ addNewContBtn.addEventListener('click', (e) => {
         alert('Enter valid phone number');
         return;
     }
-
-    //push in array----------------------------------------------------------
-    // let data_obj = {
-    //     company_name: compName,
-    //     email_id: emailId,
-    //     contact_number: phoneNum,
-    //     tag_name: tag
-    // }
-
-    // data.push(data_obj);
-    // console.log(data);
 
     //table display----------------------------------------------------------
     let tr = document.createElement('tr');
