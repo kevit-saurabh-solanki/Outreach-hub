@@ -18,7 +18,6 @@ submit.addEventListener('click', async (e) => {
         return;
     }
 
-
     dataSent = JSON.stringify({
         username: username,
         password: password

@@ -62,23 +62,13 @@
                         </div>
 
                         <div>
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" minlength="3" required>
-                        </div>
-
-                        <div>
-                            <label for="phone">Contact number</label>
-                            <input type="number" id="phone" name="phone" min="1000000000" max="9999999999" required>
+                            <label for="phoneNumber">Contact number</label>
+                            <input type="number" id="phoneNumber" name="phoneNumber" min="1000000000" max="9999999999" required>
                         </div>
 
                         <div>
                             <label for="tags">Tags</label>
-                            <select name="tags" id="tags" multiple>
-                                <option class="tag-item" value="VIP">VIP</option>
-                                <option class="tag-item" value="returning">Returning</option>
-                                <option class="tag-item" value="new-user">New user</option>
-                                <option class="tag-item" value="loyal">Loyal</option>
-                            </select>
+                            <input type="text" name="tags" id="tags">
                         </div>
                     </div>
 
@@ -100,23 +90,13 @@
                         </div>
 
                         <div>
-                            <label for="email">Email</label>
-                            <input type="email" id="edit-email" name="email" minlength="3" required>
-                        </div>
-
-                        <div>
                             <label for="edit-phone">Contact number</label>
-                            <input type="number" id="edit-phone" name="phone" min="1000000000" max="9999999999" required>
+                            <input type="number" id="edit-phone" name="phoneNumber" min="1000000000" max="9999999999" required>
                         </div>
 
                         <div>
                             <label for="edit-tags">Tags</label>
-                            <select name="tags" id="edit-tags">
-                                <option class="tag-item" value="VIP">VIP</option>
-                                <option class="tag-item" value="returning">Returning</option>
-                                <option class="tag-item" value="new-user">New user</option>
-                                <option class="tag-item" value="loyal">Loyal</option>
-                            </select>
+                            <input type="text" name="edit-tags" id="edit-tags">
                         </div>
                     </div>
 
@@ -132,7 +112,6 @@
                 <tr>
                     <th>Name</th>
                     <th>Contact number</th>
-                    <th>Email</th>
                     <th>Tags</th>
                     <th></th>
                 </tr>

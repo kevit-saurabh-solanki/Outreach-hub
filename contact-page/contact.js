@@ -12,6 +12,9 @@ addBtn.addEventListener('click', () => {
 
 cancelBtn.addEventListener('click', () => {
     formBox.classList.remove('form-visible');
+    document.querySelector('#company-name').value = "";
+    document.querySelector('#phoneNumber').value = "";
+    document.querySelector('#tags').value = "";
 })
 
 addNewContBtn.addEventListener('click', (e) => {
@@ -19,36 +22,40 @@ addNewContBtn.addEventListener('click', (e) => {
     //hide contact form box----------------------------------------------------------
     formBox.classList.remove('form-visible');
 
-    //declaration----------------------------------------------------------
-    let compName = document.querySelector('#company-name').value;
-    let emailId = document.querySelector('#email').value;
-    let phoneNum = document.querySelector('#phone').value;
-    let tag = document.querySelector('#tags').value;
+    //declaration--------------------------------------------------------------------
+    let compName = document.querySelector('#company-name').value.trim();
+    let phoneNum = document.querySelector('#phoneNumber').value.trim();
+    let tags = document.querySelector('#tags').value.trim();
 
     //validate----------------------------------------------------------
-    if (phoneNum === "" || compName === "" || emailId === "") {
+    if (phoneNum === "" || compName === "" || tags === "") {
         alert('Fill all details properly');
+        document.querySelector('#company-name').value = "";
+        document.querySelector('#phoneNumber').value = "";
+        document.querySelector('#tags').value = "";
         return;
     }
 
     //validate number----------------------------------------------------------
     if (phoneNum.length > 10 || phoneNum.length < 10) {
         alert('Enter valid phone number');
+        document.querySelector('#company-name').value = "";
+        document.querySelector('#phoneNumber').value = "";
+        document.querySelector('#tags').value = "";
         return;
     }
 
     //table display----------------------------------------------------------
     let tr = document.createElement('tr');
+
     let nameTd = document.createElement('td');
-    let emTd = document.createElement('td');
     let phnTd = document.createElement('td');
     let tagTd = document.createElement('td');
     let tagSpan = document.createElement('span');
 
-    tagSpan.innerText = tag;
+    tagSpan.innerText = tags;
     tagSpan.classList.add('tag');
     nameTd.innerText = compName;
-    emTd.innerText = emailId;
     phnTd.innerText = phoneNum;
 
     tagTd.appendChild(tagSpan);
@@ -66,10 +73,13 @@ addNewContBtn.addEventListener('click', (e) => {
 
     tr.appendChild(nameTd);
     tr.appendChild(phnTd);
-    tr.appendChild(emTd);
     tr.appendChild(tagTd);
     tr.appendChild(btnTd);
     table.appendChild(tr);
+
+    document.querySelector('#company-name').value = "";
+    document.querySelector('#phoneNumber').value = "";
+    document.querySelector('#tags').value = "";
 
     //delete row----------------------------------------------------------
     let dltBtns = document.querySelectorAll('.delete-btn');
@@ -93,23 +103,51 @@ addNewContBtn.addEventListener('click', (e) => {
         if (!currentRow) return;
 
         // Get form values
-        let editName = document.querySelector('#edit-name').value;
-        let editEmail = document.querySelector('#edit-email').value;
-        let editPhone = document.querySelector('#edit-phone').value;
-        let editTags = document.querySelector('#edit-tags').value;
+        let editName = document.querySelector('#edit-name').value.trim();
+        let editPhone = document.querySelector('#edit-phone').value.trim();
+        let editTags = document.querySelector('#edit-tags').value.trim();
+
+        //validation----------------------------------------------------
+        if (editName === "" || editPhone === "" || editTags === "") {
+            alert('Fill all details properly');
+            editForm.classList.remove('form-visible');
+            document.querySelector('#edit-name').value = "";
+            document.querySelector('#edit-phone').value = "";
+            document.querySelector('#edit-tags').value = "";
+            return;
+        }
+
+        //validate number----------------------------------------------------------
+        if (editPhone.length > 10 || editPhone.length < 10) {
+            alert('Enter valid phone number');
+            editForm.classList.remove('form-visible');
+            document.querySelector('#edit-name').value = "";
+            document.querySelector('#edit-phone').value = "";
+            document.querySelector('#edit-tags').value = "";
+            return;
+        }
 
         // Update row values
         let td = currentRow.children;
         td[0].innerText = editName;
         td[1].innerText = editPhone;
-        td[2].innerText = editEmail;
-        td[3].firstElementChild.innerText = editTags;
+        td[2].firstElementChild.innerText = editTags;
 
         // Hide form
         editForm.classList.remove('form-visible');
+        document.querySelector('#edit-name').value = "";
+        document.querySelector('#edit-phone').value = "";
+        document.querySelector('#edit-tags').value = "";
 
         // Reset tracker
         currentRow = null;
+
+        document.querySelector('.edit-cancel').addEventListener('click', () => {
+            editForm.classList.remove('form-visible');
+            document.querySelector('#edit-name').value = "";
+            document.querySelector('#edit-phone').value = "";
+            document.querySelector('#edit-tags').value = "";
+        })
     });
 })
 
