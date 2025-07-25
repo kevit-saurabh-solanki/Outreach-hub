@@ -1,24 +1,145 @@
-const addBtn = document.querySelector('.add-contact-btn');
+let dataArr;
 const formBox = document.querySelector('.contact-form-box');
 const editForm = document.querySelector('.edit-form-box');
-const cancelBtn = document.querySelector('.cancel');
-const addNewContBtn = document.querySelector('.add-new-cont');
-let table = document.querySelector('table');
 
-addBtn.addEventListener('click', () => {
+async function fetchData() {
+    try {
+        let response = await fetch('http://localhost:3000/contacts', {
+            method: "GET",
+            headers: {
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        });
+
+        if (response.ok) {
+            let jsonres = await response.json();
+            console.log(jsonres);
+            dataArr = jsonres.data;
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+
+    //render display table---------------------------------------------------------------------------------
+    for (let i = 0; i < dataArr.length; i++) {
+        let tr = document.createElement('tr');
+
+        let id = dataArr[i]['id'];
+        let name = dataArr[i]['name'];
+        let phoneNumber = dataArr[i]['phoneNumber'];
+        let tagsArr = dataArr[i]['tags'];
+
+
+        let nameTd = document.createElement('td');
+        let phnTd = document.createElement('td');
+        let tagTd = document.createElement('td');
+        let idTd = document.createElement('td');
+        tagsArr.forEach(tag => {
+            let tagSpan = document.createElement('span');
+
+            tagSpan.innerText = tag;
+            tagSpan.classList.add('tag');
+            tagTd.appendChild(tagSpan);
+        })
+
+        nameTd.innerText = name;
+        phnTd.innerText = phoneNumber;
+        idTd.innerText = id;
+
+        let btnTd = document.createElement('td');
+        var edtBtn = document.createElement('button');
+        edtBtn.innerText = 'Edit';
+        edtBtn.classList.add('edit-btn');
+        var dltBtn = document.createElement('button');
+        dltBtn.innerText = 'Delete';
+        dltBtn.classList.add('delete-btn');
+
+        btnTd.appendChild(edtBtn);
+        btnTd.appendChild(dltBtn);
+
+        tr.appendChild(idTd);
+        tr.appendChild(nameTd);
+        tr.appendChild(phnTd);
+        tr.appendChild(tagTd);
+        tr.appendChild(btnTd);
+        document.querySelector('table').appendChild(tr);
+
+        document.querySelector('#company-name').value = "";
+        document.querySelector('#phoneNumber').value = "";
+        document.querySelector('#tags').value = "";
+
+        ///delete row rendering and also in api-------------------------------------------------------------
+        let currentTr = null;
+        let dltBtns = document.querySelectorAll('.delete-btn');
+        dltBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('clicked');
+                currentTr = e.target.closest('tr');
+                let deleteObj;
+                let tdArr = currentTr.children;
+                let num = tdArr[1].innerText;
+                for (let i = 0; i < dataArr.length; i++) {
+                    if (dataArr[i]['phoneNumber'] === num) {
+                        deleteObj = dataArr[i];
+                        break;
+                    }
+                }
+                console.log(deleteObj);
+                let delId = deleteObj["id"];
+                // currentTr.remove();
+
+                // Delete the data from api------------------------------------------------------------------
+                // async function deleteData() {
+                //     try {
+                //         let response = await fetch(`http://localhost:3000/contacts/${delId}`, {
+                //             method: "DELETE",
+                //             headers: {
+                //                 "content-type": "application/json",
+                //                 "Authorization": `Bearer ${localStorage.getItem("token")}`
+                //             }
+                //         });
+
+                //         if (response.ok) {
+                //             let jsonres = await response.json();
+                //             console.log(jsonres);
+                //             console.log("Data deleted");
+                //         }
+                //     }
+                //     catch (error) {
+                //         console.log(error);
+                //     }
+                // }
+                // deleteData();
+            })
+        })
+    }
+
+}
+//fetch data from api---------------------------------------------------------------------------
+fetchData();
+
+
+//Visible the the add contact box---------------------------------------------------------------------
+document.querySelector('.add-contact-btn').addEventListener('click', () => {
     formBox.classList.toggle('form-visible');
     editForm.classList.remove('form-visible');
 })
 
-cancelBtn.addEventListener('click', () => {
+//inVisible the the add contact box---------------------------------------------------------------------
+document.querySelector('.cancel').addEventListener('click', () => {
     formBox.classList.remove('form-visible');
     document.querySelector('#company-name').value = "";
     document.querySelector('#phoneNumber').value = "";
     document.querySelector('#tags').value = "";
 })
 
-addNewContBtn.addEventListener('click', async (e) => {
+//Add new contact---------------------------------------------------------------------
+document.querySelector('.add-new-cont').addEventListener('click', async (e) => {
     e.preventDefault();
+
     //hide contact form box----------------------------------------------------------
     formBox.classList.remove('form-visible');
 
@@ -46,45 +167,18 @@ addNewContBtn.addEventListener('click', async (e) => {
         return;
     }
 
-    //table display----------------------------------------------------------
-    let tr = document.createElement('tr');
+    //check for duplicate number-------------------------------------------------
+    for (let i = 0; i < dataArr.length; i++) {
+        if (dataArr[i]['phoneNumber'] === phoneNum) {
+            alert("Contact already exist");
+            document.querySelector('#company-name').value = "";
+            document.querySelector('#phoneNumber').value = "";
+            document.querySelector('#tags').value = "";
+            return;
+        }
+    }
 
-    let nameTd = document.createElement('td');
-    let phnTd = document.createElement('td');
-    let tagTd = document.createElement('td');
-    tagArr.forEach(tag => {
-        let tagSpan = document.createElement('span');
-
-        tagSpan.innerText = tag;
-        tagSpan.classList.add('tag');
-        tagTd.appendChild(tagSpan);
-    })
-
-    nameTd.innerText = compName;
-    phnTd.innerText = phoneNum;
-
-    let btnTd = document.createElement('td');
-    let edtBtn = document.createElement('button');
-    edtBtn.innerText = 'Edit';
-    edtBtn.classList.add('edit-btn');
-    let dltBtn = document.createElement('button');
-    dltBtn.innerText = 'Delete';
-    dltBtn.classList.add('delete-btn');
-
-    btnTd.appendChild(edtBtn);
-    btnTd.appendChild(dltBtn);
-
-    tr.appendChild(nameTd);
-    tr.appendChild(phnTd);
-    tr.appendChild(tagTd);
-    tr.appendChild(btnTd);
-    table.appendChild(tr);
-
-    document.querySelector('#company-name').value = "";
-    document.querySelector('#phoneNumber').value = "";
-    document.querySelector('#tags').value = "";
-
-    //new data added to the prebuilt api---------------------------------------------
+    // new data added to the prebuilt api---------------------------------------------
     try {
         let response = await fetch('http://localhost:3000/contacts', {
             method: 'POST',
@@ -108,13 +202,6 @@ addNewContBtn.addEventListener('click', async (e) => {
         console.log(error);
     }
 
-    //delete row----------------------------------------------------------
-    let dltBtns = document.querySelectorAll('.delete-btn');
-    dltBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.target.parentElement.parentElement.remove();
-        })
-    })
 
     //edit row----------------------------------------------------------
     var currentRow = null;
@@ -192,6 +279,28 @@ addNewContBtn.addEventListener('click', async (e) => {
         })
     })
 })
+
+
+
+// async function deleteData() {
+//     try {
+//         let response = await fetch('http://localhost:3000/contacts/2', {
+//             method: "DELETE",
+//             headers: {
+//                 "content-type": "application/json",
+//                 "Authorization": `Bearer ${localStorage.getItem("token")}`
+//             }
+//         });
+
+//         if (response.ok) {
+//             let jsonres = await response.json();
+//             console.log(jsonres);
+//         }
+//     }
+//     catch (error) {
+//         console.log(error);
+//     }
+// }
 
 
 

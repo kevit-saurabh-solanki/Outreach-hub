@@ -1,4 +1,4 @@
-// const url = "http://localhost:3000/contacts"
+
 
 // //Add contacts to api --------------------------------------------------------------------------------
 // const add_contact = async () => {
