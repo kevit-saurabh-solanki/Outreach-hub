@@ -1,4 +1,3 @@
-
 const url = 'http://localhost:3000/auth/login';
 const submit = document.querySelector('#submit');
 let data;
@@ -34,7 +33,7 @@ submit.addEventListener('click', async (e) => {
         });
         if (response.ok) {
             data = await response.json();
-            console.log(data);
+            console.log("token generted");
             localStorage.setItem("token", data.access_token);
         }
     }
