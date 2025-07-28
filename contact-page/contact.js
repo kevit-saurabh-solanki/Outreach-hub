@@ -2,6 +2,7 @@ let dataArr;
 const formBox = document.querySelector('.contact-form-box');
 const editForm = document.querySelector('.edit-form-box');
 
+//fetch data from api---------------------------------------------------------------------------
 async function fetchData() {
     try {
         let response = await fetch('http://localhost:3000/contacts', {
@@ -15,8 +16,8 @@ async function fetchData() {
         if (response.ok) {
             let jsonres = await response.json();
             console.log(jsonres);
+            console.log('data fetched');
             dataArr = jsonres.data;
-            console.log(dataArr);
         }
     }
     catch (error) {
@@ -72,7 +73,6 @@ async function fetchData() {
         document.querySelector('#tags').value = "";
     }
 }
-//fetch data from api---------------------------------------------------------------------------
 fetchData();
 
 ///delete row rendering and also in api-------------------------------------------------------------
@@ -80,30 +80,33 @@ let currentTr = null;
 document.querySelector('table').addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
         e.preventDefault();
-        currentTr = e.target.closest('tr');
-        let delId = currentTr.firstElementChild.innerText;
-        console.log(delId);
 
-        async function deleteData() {
-            try {
-                let response = await fetch(`http://localhost:3000/contacts/${delId}`, {
-                    method: "DELETE",
-                    headers: {
-                        "content-type": "application/json",
-                        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        let confDelete = confirm("Do you want to delete the contact");
+        if (confDelete) {
+            currentTr = e.target.closest('tr');
+            let delId = currentTr.firstElementChild.innerText;
+
+            async function deleteData() {
+                try {
+                    let response = await fetch(`http://localhost:3000/contacts/${delId}`, {
+                        method: "DELETE",
+                        headers: {
+                            "content-type": "application/json",
+                            "Authorization": `Bearer ${localStorage.getItem("token")}`
+                        }
+                    });
+
+                    if (response.ok) {
+                        console.log("Data deleted");
+                        currentTr.remove();
                     }
-                });
-
-                if (response.ok) {
-                    console.log("Data deleted");
-                    currentTr.remove();
+                }
+                catch (error) {
+                    console.log(error);
                 }
             }
-            catch (error) {
-                console.log(error);
-            }
+            deleteData();
         }
-        deleteData();
     }
 })
 
@@ -164,7 +167,7 @@ document.querySelector('.add-new-cont').addEventListener('click', (e) => {
         }
     }
 
-     // new data added to the prebuilt api---------------------------------------------
+    // new data added to the prebuilt api---------------------------------------------
     async function addData() {
         try {
             let response = await fetch('http://localhost:3000/contacts', {
@@ -199,6 +202,7 @@ var currentRow = null;
 document.querySelector('table').addEventListener("click", (e) => {
     if (e.target.classList.contains('edit-btn')) {
         currentRow = e.target.closest('tr');
+        editForm.classList.add('form-visible');
     }
 })
 
@@ -207,12 +211,14 @@ document.querySelector('.edit-cont').addEventListener('click', (e) => {
     e.preventDefault();
     if (!currentRow) return;
 
+    //edit form visible-----------------------------------------------------------------
+
+
     // Get edit form values------------------------------------------------
     let editName = document.querySelector('#edit-name').value.trim();
     let editPhone = document.querySelector('#edit-phone').value.trim();
     let editTags = document.querySelector('#edit-tags').value.trim();
     let editTagArr = editTags.split(',');
-    console.log(editTagArr);
 
     //validation----------------------------------------------------
     if (editName === "" || editPhone === "" || editTags === "") {
@@ -239,11 +245,9 @@ document.querySelector('.edit-cont').addEventListener('click', (e) => {
     td[1].innerText = editName;
     td[2].innerText = editPhone;
     let spans = td[3].children;
-    console.log(spans);
     for (let i = 0; i < spans.length; i++) {
         spans[i].remove();
     }
-    td[3].firstElementChild.remove();
     editTagArr.forEach(editTag => {
         let tagSpan = document.createElement('span');
 
@@ -253,32 +257,32 @@ document.querySelector('.edit-cont').addEventListener('click', (e) => {
     })
 
     //edit the contact in api-----------------------------------------------
-    // let ediId = currentRow.firstElementChild.innerText;
-    // async function editContact() {
-    //     try {
-    //         let response = await fetch(`http://localhost:3000/contacts/${ediId}`, {
-    //             method: 'PUT',
-    //             body: JSON.stringify({
-    //                 "name": editName,
-    //                 "phoneNumber": editPhone,
-    //                 "tags": editTagArr
-    //             }),
-    //             headers: {
-    //                 "content-type": "application/json",
-    //                 "Authorization": `Bearer ${localStorage.getItem("token")}`
-    //             }
-    //         })
-    //         if (response.ok) {
-    //             let jsonres = await response.json();
-    //             console.log(jsonres);
-    //             console.log("contact edited");
-    //         }
-    //     }
-    //     catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-    // editContact();
+    let ediId = currentRow.firstElementChild.innerText;
+    async function editContact() {
+        try {
+            let response = await fetch(`http://localhost:3000/contacts/${ediId}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    "name": editName,
+                    "phoneNumber": editPhone,
+                    "tags": editTagArr
+                }),
+                headers: {
+                    "content-type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            if (response.ok) {
+                let jsonres = await response.json();
+                console.log(jsonres);
+                console.log("contact edited");
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    editContact();
 
 
     // Hide form-------------------------------------------
